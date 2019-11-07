@@ -66,7 +66,7 @@ def other_dict(df, col, th=0.03):
 
 def otherify(df, col, d):
     df_n = df.copy()
-    df_n[col] = df_n[col].map(lambda x: d[x])
+    df_n[col] = df_n[col].map(lambda x: d.get(x,'xxna'))
     return df_n
 
 def remove_outliers(df,col):
@@ -178,3 +178,25 @@ def boxcox_lamb_df(ser, ls = [i/10 for i in range(-30,31,5)]):
 def boxcox_lamb(ser, ls = [i/10 for i in range(-30,31,5)]):
     df = boxcox_lamb_df(ser,ls)
     return df.lamb[df.coef.idxmax()]
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+from sklearn import svm, datasets
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix
+from sklearn.utils.multiclass import unique_labels
+
+# import some data to play with
+iris = datasets.load_iris()
+X = iris.data
+y = iris.target
+class_names = iris.target_names
+
+# Split the data into a training set and a test set
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+
+# Run classifier, using a model that is too regularized (C too low) to see
+# the impact on the results
+classifier = svm.SVC(kernel='linear', C=0.01)
+y_pred = classifier.fit(X_train, y_train).predict(X_test)

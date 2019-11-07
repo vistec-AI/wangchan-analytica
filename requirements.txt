@@ -1,0 +1,8 @@
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+seaborn
+plotnine==0.5.1
+ipywidgets
