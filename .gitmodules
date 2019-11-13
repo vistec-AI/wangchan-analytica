@@ -1,0 +1,4 @@
+[submodule "michael"]
+	path = michael
+	url = https://github.com/cstorm125/michael
+	branch = master
