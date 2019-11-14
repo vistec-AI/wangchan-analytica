@@ -7,3 +7,5 @@ seaborn
 plotnine==0.5.1
 ipywidgets
 qgrid
+fuzzywuzzy
+emoji
