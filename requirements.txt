@@ -9,3 +9,5 @@ ipywidgets
 qgrid
 fuzzywuzzy
 emoji
+pythainlp[thai2fit,ml]==2.1.dev7
+git+git://github.com/cstorm125/michael@master
